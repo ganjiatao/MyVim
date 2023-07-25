@@ -41,15 +41,11 @@ mv ~/.cache/nvim ~/.cache/nvim.bak
 ```
 安装starter
 ```bash
-git clone https://github.com/aslingguang/MyVim-starter ~/.config/nvim/lua
+git clone https://github.com/aslingguang/MyVim-starter ~/.config/nvim/
 ```
 删除.git 目录(可选，自己不上传代码可以不删)
 ```bash
 rm -rf ~/.config/nvim/.git
-```
-编辑`~/.config/nvim/init.lua`，添加如下内容
-```lua
-require("config.lazy")
 ```
 
 启动
