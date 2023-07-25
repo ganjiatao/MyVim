@@ -15,34 +15,34 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 -- mykeymap
-keymap.set("i", "jk", "<ESC>")
-keymap.set({"n", "v"}, "jk", ":wq<CR>")
-keymap.set("t", "jk", "<C-\\><C-n>:q<CR>")
+map("i", "jk", "<ESC>")
+map({"n", "v"}, "jk", ":wq<CR>")
+map("t", "jk", "<C-\\><C-n>:q<CR>")
 
 -- 文件或文件内容查找
-keymap.set("n", "<leader>ff", "<cmd>FZF<CR>")
-keymap.set("n", "<leader>fg", "<cmd>Rg<CR>")
+map("n", "<leader>ff", "<cmd>FZF<CR>")
+map("n", "<leader>fg", "<cmd>Rg<CR>")
 
 -- 新增窗口
-keymap.set("n", "<leader>sv", "<C-w>v") -- 水平新增窗口 
-keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
+map("n", "<leader>sv", "<C-w>v") -- 水平新增窗口 
+map("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
 
 -- 复制
-keymap.set('v', '<C-c>', '"+y')
-keymap.set('i', '<C-c>', '<Esc>"+y')
-keymap.set('n', '<C-c>', '"+y')
+map('v', '<C-c>', '"+y')
+map('i', '<C-c>', '<Esc>"+y')
+map('n', '<C-c>', '"+y')
 
 -- 剪切
-keymap.set('n', '<C-x>', '"+x')
-keymap.set('i', '<C-c>', '<Esc>"+x')
-keymap.set('v', '<C-x>', '"+x')
+map('n', '<C-x>', '"+x')
+map('i', '<C-c>', '<Esc>"+x')
+map('v', '<C-x>', '"+x')
 
 -- 撤销操作
-keymap.set('n', '<C-z>', 'u')
-keymap.set('i', '<C-z>', '<Esc>u')
+map('n', '<C-z>', 'u')
+map('i', '<C-z>', '<Esc>u')
 
 -- nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+map("n", "<leader>e", ":NvimTreeToggle<CR>")
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
