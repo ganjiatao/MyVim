@@ -63,7 +63,7 @@ nvim
 
 [LazyVim源码](https://github.com/LazyVim/LazyVim)
 
-[Lazy.im源码](https://github.com/LazyVim/lazy.nvim)
+[Lazy.nvim源码](https://github.com/folke/lazy.nvim)
 
 
 
