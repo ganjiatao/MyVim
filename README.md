@@ -58,8 +58,11 @@ nvim
 ```
 ## 参考
 [LazyVim官方文档](https://www.lazyvim.org/)
+
 [LazyVim-Starter源码](https://github.com/LazyVim/starter)
+
 [LazyVim源码](https://github.com/LazyVim/LazyVim)
+
 [Lazy.im源码](https://github.com/LazyVim/lazy.vim)
 
 
