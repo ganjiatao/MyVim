@@ -9,24 +9,25 @@
 
 ## 安装
 ### 1.如果安装了lazyvim，可直接修改`config/lazy.lua`
-![image](https://github.com/aslingguang/MyVim/assets/74995823/74e1dcd4-cbc4-45a7-b12a-78701d5e1e1b)
+![image](https://github.com/aslingguang/MyVim-starter/assets/74995823/0f31d72f-ad81-49b0-be69-f3b61d7acca9)
+
 只需修改如下内容
 ```lua
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    -- { "LazyVim/LazyVim", import = "myvim.plugins" },
+    -- { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { "aslingguang/MyVim", import = "myvim.plugins" },
-    { import = "lazyvim.my" },
+    { import = "myvim.my" },
     -- import any extras modules here
-    -- { import = "myvim.plugins.extras.lang.typescript" },
-    -- { import = "myvim.plugins.extras.lang.json" },
-    -- { import = "myvim.plugins.extras.ui.mini-animate" },
+    -- { import = "lazyvim.plugins.extras.lang.typescript" },
+    -- { import = "lazyvim.plugins.extras.lang.json" },
+    -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- import/override with your plugins
     -- { import = "plugins" },
   },
 ```
-将`{ "LazyVim/LazyVim", import = "myvim.plugins" },`修改为` { "aslingguang/MyVim", import = "myvim.plugins" },\n{ import = "lazyvim.my" },`
+将`{ "LazyVim/LazyVim", import = "lazyvim.plugins" },`修改为` { "aslingguang/MyVim", import = "myvim.plugins" },\n{ import = "myvim.my" },`
 
 ### 2.若没有，则可安装lazyvim的官方lazyvim-starter或我配好的mylazyvim-starter
 可选择先备份数据
