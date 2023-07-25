@@ -11,9 +11,10 @@ local function map(mode, lhs, rhs, opts)
     if opts.remap and not vim.g.vscode then
       opts.remap = nil
     end
-    vim.map(mode, lhs, rhs, opts)
+    vim.keymap.set(mode, lhs, rhs, opts)
   end
 end
+
 -- mykeymap
 map("i", "jk", "<ESC>")
 map({"n", "v"}, "jk", ":wq<CR>")
