@@ -15,18 +15,18 @@
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    -- { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    { "aslingguang/MyVim", import = "lazyvim.plugins" },
+    -- { "LazyVim/LazyVim", import = "myvim.plugins" },
+    { "aslingguang/MyVim", import = "myvim.plugins" },
     { import = "lazyvim.my" },
     -- import any extras modules here
-    -- { import = "lazyvim.plugins.extras.lang.typescript" },
-    -- { import = "lazyvim.plugins.extras.lang.json" },
-    -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
+    -- { import = "myvim.plugins.extras.lang.typescript" },
+    -- { import = "myvim.plugins.extras.lang.json" },
+    -- { import = "myvim.plugins.extras.ui.mini-animate" },
     -- import/override with your plugins
     -- { import = "plugins" },
   },
 ```
-将`{ "LazyVim/LazyVim", import = "lazyvim.plugins" },`修改为` { "aslingguang/MyVim", import = "lazyvim.plugins" },\n{ import = "lazyvim.my" },`
+将`{ "LazyVim/LazyVim", import = "myvim.plugins" },`修改为` { "aslingguang/MyVim", import = "myvim.plugins" },\n{ import = "lazyvim.my" },`
 
 ### 2.若没有，则可安装lazyvim的官方lazyvim-starter或我配好的mylazyvim-starter
 可选择先备份数据
