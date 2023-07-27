@@ -18,16 +18,20 @@ end
 -- mykeymap
 
 map("i", "jk", "<ESC>" ,{ desc = "退出编辑/Exit Editing" })
-map({"n", "v"}, "jk", ":wq<CR>" ,{ desc = "保存并退出/Save and Exit" })
+map("n", "jk", ":q<CR>" ,{ desc = "退出/Exit" })
 map("t", "jk", "<C-\\><C-n>:q<CR>" ,{ desc = "退出终端/Exit Terminal" })
 
-map("i", "<C-a>", "<C-o>gg<C-o>VG<cr>" ,{ desc = "全选/Select all" })
+-- map("i", "<C-a>", "<C-o>gg<C-o>VG<cr>" ,{ desc = "全选/Select all" })
+map({ "i", "v"}, "<C-a>", "<esc>ggVG" ,{ desc = "全选/Select all" })
+map("n", "<C-a>", "ggVG" ,{ desc = "全选/Select all" })
 
 map("n", "<leader>ff", "<cmd>FZF<CR>" ,{ desc = "搜索文件/Find file" })
 map("n", "<leader>fg", "<cmd>Rg<CR>"  ,{ desc = "搜索文件内容/Find file content" })
 
 map("n", "<leader>sv", "<C-w>v" ,{ desc = "水平新增窗口/Add Window Right" })   
 map("n", "<leader>sh", "<C-w>s" ,{ desc = "垂直新增窗口/Add Window Down" }) 
+
+map({"v","n","s"}, "<leader>sc", "<cmd>q<cr>" ,{ desc = "关闭窗口/Exit Window" })   
 
 map('v', '<C-c>', '"+y' ,{ desc = "copy" })
 map('i', '<C-c>', '<Esc>"+y' ,{ desc = "copy" })
