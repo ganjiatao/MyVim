@@ -17,14 +17,15 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     -- { "LazyVim/LazyVim", import = "myvim.plugins" },
     { "aslingguang/MyVim", import = "myvim.plugins" },
-    { import = "lazyvim.my" },
+    { import = "myvim.my" },
     -- import any extras modules here
     -- { import = "myvim.plugins.extras.lang.typescript" },
     -- { import = "myvim.plugins.extras.lang.json" },
     -- { import = "myvim.plugins.extras.ui.mini-animate" },
     -- import/override with your plugins
-    -- { import = "plugins" },
+    -- { import = "plugins.disable" },
   },
+})
 ```
 将`{ "LazyVim/LazyVim", import = "myvim.plugins" },`修改为` { "aslingguang/MyVim", import = "myvim.plugins" },\n{ import = "lazyvim.my" },`
 

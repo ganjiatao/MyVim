@@ -16,34 +16,34 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- mykeymap
-map("i", "jk", "<ESC>")
-map({"n", "v"}, "jk", ":wq<CR>")
-map("t", "jk", "<C-\\><C-n>:q<CR>")
 
--- 文件或文件内容查找
-map("n", "<leader>ff", "<cmd>FZF<CR>")
-map("n", "<leader>fg", "<cmd>Rg<CR>")
+map("i", "jk", "<ESC>" ,{ desc = "退出编辑/Exit Editing" })
+map({"n", "v"}, "jk", ":wq<CR>" ,{ desc = "保存并退出/Save and Exit" })
+map("t", "jk", "<C-\\><C-n>:q<CR>" ,{ desc = "退出终端/Exit Terminal" })
 
--- 新增窗口
-map("n", "<leader>sv", "<C-w>v") -- 水平新增窗口 
-map("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
+map("i", "<C-a>", "<C-o>gg<C-o>VG<cr>" ,{ desc = "全选/Select all" })
 
--- 复制
-map('v', '<C-c>', '"+y')
-map('i', '<C-c>', '<Esc>"+y')
-map('n', '<C-c>', '"+y')
+map("n", "<leader>ff", "<cmd>FZF<CR>" ,{ desc = "搜索文件/Find file" })
+map("n", "<leader>fg", "<cmd>Rg<CR>"  ,{ desc = "搜索文件内容/Find file content" })
 
--- 剪切
-map('n', '<C-x>', '"+x')
-map('i', '<C-c>', '<Esc>"+x')
-map('v', '<C-x>', '"+x')
 
--- 撤销操作
-map('n', '<C-z>', 'u')
-map('i', '<C-z>', '<Esc>u')
 
--- nvim-tree
-map("n", "<leader>e", ":NvimTreeToggle<CR>")
+map("n", "<leader>sv", "<C-w>v" ,{ desc = "水平新增窗口/Add Window Right" })   
+map("n", "<leader>sh", "<C-w>s" ,{ desc = "垂直新增窗口/Add Window Down" }) 
+
+map('v', '<C-c>', '"+y' ,{ desc = "copy" })
+map('i', '<C-c>', '<Esc>"+y' ,{ desc = "copy" })
+map('n', '<C-c>', '"+y' ,{ desc = "copy" })
+
+map('n', '<C-x>', '"+x' ,{ desc = "cut" })
+map('i', '<C-c>', '<Esc>"+x' ,{ desc = "cut" })
+map('v', '<C-x>', '"+x' ,{ desc = "cut" })
+
+
+map('n', '<C-z>', 'u' ,{ desc = "撤销/undo" })
+map('i', '<C-z>', '<Esc>u' ,{ desc = "撤销/undo" })
+
+map("n", "<leader>e", ":NvimTreeToggle<CR>" ,{ desc = "nvim-tree" })
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
