@@ -26,8 +26,6 @@ map("i", "<C-a>", "<C-o>gg<C-o>VG<cr>" ,{ desc = "全选/Select all" })
 map("n", "<leader>ff", "<cmd>FZF<CR>" ,{ desc = "搜索文件/Find file" })
 map("n", "<leader>fg", "<cmd>Rg<CR>"  ,{ desc = "搜索文件内容/Find file content" })
 
-
-
 map("n", "<leader>sv", "<C-w>v" ,{ desc = "水平新增窗口/Add Window Right" })   
 map("n", "<leader>sh", "<C-w>s" ,{ desc = "垂直新增窗口/Add Window Down" }) 
 
@@ -39,11 +37,12 @@ map('n', '<C-x>', '"+x' ,{ desc = "cut" })
 map('i', '<C-c>', '<Esc>"+x' ,{ desc = "cut" })
 map('v', '<C-x>', '"+x' ,{ desc = "cut" })
 
-
 map('n', '<C-z>', 'u' ,{ desc = "撤销/undo" })
 map('i', '<C-z>', '<Esc>u' ,{ desc = "撤销/undo" })
 
 map("n", "<leader>e", ":NvimTreeToggle<CR>" ,{ desc = "nvim-tree" })
+
+
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
