@@ -9,7 +9,8 @@
 
 ## 安装
 ### 1.如果安装了lazyvim，可直接修改`config/lazy.lua`
-![image](https://github.com/aslingguang/MyVim-starter/assets/74995823/0f31d72f-ad81-49b0-be69-f3b61d7acca9)
+![image](https://github.com/aslingguang/MyVim/assets/74995823/8aae7184-3277-496b-bce5-465527bf0935)
+
 
 只需修改如下内容
 ```lua
