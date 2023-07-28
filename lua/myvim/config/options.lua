@@ -4,13 +4,6 @@ vim.g.maplocalleader = "\\"
 
 local opt = vim.opt
 
--- 设置浮动窗口颜色
-
-local normalFloat = vim.api.nvim_get_hl_by_name("NormalFloat", true)-- 获取 NormalFloat 高亮组的属性
-normalFloat.background = nil  -- 修改背景色属性
-vim.api.nvim_set_hl(0, "NormalFloat", normalFloat) -- 应用修改后的属性到 NormalFloat 高亮组
-
-
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
@@ -29,7 +22,7 @@ opt.mouse = "a" -- Enable mouse mode
 opt.number = true -- Print line number
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
-opt.relativenumber = false -- Relative line numbers
+opt.relativenumber = true -- Relative line numbers
 opt.scrolloff = 4 -- Lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 opt.shiftround = true -- Round indent

@@ -91,8 +91,7 @@ If you rather use leap/flit instead, you can add the leap extra:
       local wk = require("which-key")
       wk.setup(opts)
       wk.register(opts.defaults)
-      -- 设置背景透明
-      vim.cmd("highlight WhichKeyFloat guibg=NONE ctermbg=NONE")
+
     end,
   },
 
@@ -228,6 +227,7 @@ If you rather use leap/flit instead, you can add the leap extra:
 
   -- Finds and lists all of the TODO, HACK, BUG, etc comment
   -- in your project and loads them into a browsable list.
+
   {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble" },
@@ -240,7 +240,7 @@ If you rather use leap/flit instead, you can add the leap extra:
       { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
       { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },  
     },
-    opts = function() 
+    opt = function() 
       if require("myvim.util").has("telescope.nvim") then
         cmd[#cmd + 1] = "TodoTelescope"
       end
@@ -251,6 +251,39 @@ If you rather use leap/flit instead, you can add the leap extra:
       end
     end
   },
+  -- {
+  --   "folke/todo-comments.nvim",
+    
+  --   local function cmdProcess() 
+  --     cmd = { "TodoTrouble" },
+  --     if require("myvim.util").has("telescope.nvim") then
+  --       cmd[#cmd + 1] = "TodoTelescope"
+  --     end
+  --     return cmd
+  --   end
+  --   -- cmd = cmdProcess() 
+
+  --   event = { "BufReadPost", "BufNewFile" },
+  --   config = true,
+  --   -- stylua: ignore
+    
+  --   local function keysProcess() 
+  --     keys = {
+  --       { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
+  --       { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
+  --       { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
+  --       { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },  
+  --     },
+  --     if require("myvim.util").has("telescope.nvim") then
+  --       keys[#keys + 1] = { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" }
+  --       keys[#keys + 1] = { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" }
+  --     end
+  --     return keys
+  --   end
+  --   -- keys = keysProcess()
+  -- },
+
+
   -- {
   --   "folke/todo-comments.nvim",
   --   cmd = { "TodoTrouble", "TodoTelescope" },
