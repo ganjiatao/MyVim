@@ -20,7 +20,7 @@ return {
     end,
     keys = {
         -- stylua: ignore
-      { "<leader>p", function() require("telescope").extensions.yank_history.yank_history({ }) end, desc = "Open Yank History" },
+      
       { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank text" },
       { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put yanked text after cursor" },
       { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
@@ -39,5 +39,8 @@ return {
       { "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put after applying a filter" },
       { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before applying a filter" },
     },
+  if require("myvim.util").has("telescope.nvim") then
+    keys[#keys +1] = { "<leader>p", function() require("telescope").extensions.yank_history.yank_history({ }) end, desc = "Open Yank History" }
+  end
   },
 }

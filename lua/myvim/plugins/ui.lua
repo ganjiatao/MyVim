@@ -274,6 +274,7 @@ return {
 
   -- Dashboard. This runs when neovim starts, and is what displays
   -- the "MyVim" banner.
+
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
@@ -293,18 +294,29 @@ return {
                ╚████╔╝ ██║██║ ╚═╝ ██║
                 ╚═══╝  ╚═╝╚═╝     ╚═╝
       ]]
-
-      dashboard.section.header.val = vim.split(logo, "\n")
-      dashboard.section.buttons.val = {
+      
+      local buttons = {
         dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
-        dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
         dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
         dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
+        dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
         dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
         dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
         dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
         dashboard.button("q", " " .. " Quit", ":qa<CR>"),
       }
+
+      dashboard.section.header.val = vim.split(logo, "\n")
+
+      if not require("myvim.util").has("telescope.nvim") then
+        buttons[1] = dashboard.button("f", " " .. " Find file", "<cmd>FZF<CR>")
+        buttons[3] = dashboard.button("g", " " .. " Find text", "<cmd>Rg<CR>")
+        table.remove(buttons, 2)
+      end
+      
+      dashboard.section.buttons.val = buttons
+  
+
       for _, button in ipairs(dashboard.section.buttons.val) do
         button.opts.hl = "AlphaButtons"
         button.opts.hl_shortcut = "AlphaShortcut"

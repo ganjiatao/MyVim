@@ -230,7 +230,7 @@ If you rather use leap/flit instead, you can add the leap extra:
   -- in your project and loads them into a browsable list.
   {
     "folke/todo-comments.nvim",
-    cmd = { "TodoTrouble", "TodoTelescope" },
+    cmd = { "TodoTrouble" },
     event = { "BufReadPost", "BufNewFile" },
     config = true,
     -- stylua: ignore
@@ -238,9 +238,32 @@ If you rather use leap/flit instead, you can add the leap extra:
       { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
       { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
       { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
-      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },  
     },
+    opts = function() 
+      if require("myvim.util").has("telescope.nvim") then
+        cmd[#cmd + 1] = "TodoTelescope"
+      end
+      if require("myvim.util").has("telescope.nvim") then
+        keys[#keys + 1] = { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" }
+        keys[#keys + 1] = { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" }
+
+      end
+    end
   },
+  -- {
+  --   "folke/todo-comments.nvim",
+  --   cmd = { "TodoTrouble", "TodoTelescope" },
+  --   event = { "BufReadPost", "BufNewFile" },
+  --   config = true,
+  --   -- stylua: ignore
+  --   keys = {
+  --     { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
+  --     { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
+  --     { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
+  --     { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+  --     { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+  --     { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+  --   },
+  -- },
 }

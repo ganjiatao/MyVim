@@ -10,12 +10,18 @@ return {
     event = "VimEnter",
     opts = function()
       local logo = table.concat({
-        "            ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z",
-        "            ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z    ",
-        "            ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z       ",
-        "            ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z         ",
-        "            ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║           ",
-        "            ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝           ",
+  "      ██████╗  ██╗   ██╗ █████╗ ███╗   ██╗ ██████╗             ",
+  "      ██╔════╝ ██║   ██║██╔══██╗████╗  ██║██╔════╝             ",
+  "      ██║  ███╗██║   ██║███████║██╔██╗ ██║██║  ███╗            ",
+  "      ██║   ██║██║   ██║██╔══██║██║╚██╗██║██║   ██║            ",
+  "      ╚██████╔╝╚██████╔╝██║  ██║██║ ╚████║╚██████╔╝            ",
+  "       ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝             ",
+  "                ██╗   ██╗██╗███╗   ███╗                        ",
+  "                ██║   ██║██║████╗ ████║                        ",
+  "                ██║   ██║██║██╔████╔██║                        ",
+  "                ╚██╗ ██╔╝██║██║╚██╔╝██║                        ",
+  "                 ╚████╔╝ ██║██║ ╚═╝ ██║                        ",
+  "                  ╚═══╝  ╚═╝╚═╝     ╚═╝                        ",
       }, "\n")
       local pad = string.rep(" ", 22)
       local new_section = function(name, action, section)
@@ -37,6 +43,12 @@ return {
           new_section("Quit",         "qa",                   "Built-in"),
           new_section("Session restore", [[lua require("persistence").load()]], "Session"),
         },
+        if not require("myvim.util").has("telescope.nvim") then
+          items[1] = new_section("Find file",    "FZF", "fzf"),
+          items[3] =  new_section("Grep text",    "Rg",  "fzf.vim"),
+          table.remove(items, 2)
+        end
+
         content_hooks = {
           starter.gen_hook.adding_bullet(pad .. "░ ", false),
           starter.gen_hook.aligning("center", "center"),

@@ -39,6 +39,7 @@ map('v', '<C-x>', '"+x' ,{ desc = "cut" })
 map('n', '<C-z>', 'u' ,{ desc = "撤销/undo" })
 map('i', '<C-z>', '<Esc>u' ,{ desc = "撤销/undo" })
 
+
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
