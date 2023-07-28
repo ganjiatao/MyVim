@@ -15,6 +15,7 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
+
 -- mykeymap
 
 map("i", "jk", "<ESC>" ,{ desc = "退出编辑/Exit Editing" })
