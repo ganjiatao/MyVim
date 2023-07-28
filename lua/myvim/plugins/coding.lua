@@ -136,19 +136,34 @@ return {
     },
   },
 
-  -- comments
+  --comments
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
   {
-    "echasnovski/mini.comment",
+    "numToStr/Comment.nvim",
     event = "VeryLazy",
-    opts = {
-      options = {
-        custom_commentstring = function()
-          return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
-        end,
-      },
+    keys = {
+      {'n', '<leader>/', ':lua require("Comment.api").toggle_current_linewise()<CR>',desc = { "注释" }},
+      {'v', '<leader>/', ':lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>',desc = { "注释" }},
     },
+    config = function()
+      require('Comment').setup({
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      })
+    end,
+
   },
+  -- comments
+  -- { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+  -- {
+  --   "echasnovski/mini.comment",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     options = {
+  --       custom_commentstring = function()
+  --         return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
+  --       end,
+  --     },
+  -- },
 
   -- Better text-objects
   {

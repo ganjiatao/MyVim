@@ -15,38 +15,6 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
--- mykeymap
-
-map("i", "jk", "<ESC>" ,{ desc = "退出编辑/Exit Editing" })
-map("n", "jk", ":q<CR>" ,{ desc = "退出/Exit" })
-map("t", "jk", "<C-\\><C-n>:q<CR>" ,{ desc = "退出终端/Exit Terminal" })
-
--- map("i", "<C-a>", "<C-o>gg<C-o>VG<cr>" ,{ desc = "全选/Select all" })
-map({ "i", "v"}, "<C-a>", "<esc>ggVG" ,{ desc = "全选/Select all" })
-map("n", "<C-a>", "ggVG" ,{ desc = "全选/Select all" })
-
-map("n", "<leader>ff", "<cmd>FZF<CR>" ,{ desc = "搜索文件/Find file" })
-map("n", "<leader>fg", "<cmd>Rg<CR>"  ,{ desc = "搜索文件内容/Find file content" })
-
-map("n", "<leader>sv", "<C-w>v" ,{ desc = "水平新增窗口/Add Window Right" })   
-map("n", "<leader>sh", "<C-w>s" ,{ desc = "垂直新增窗口/Add Window Down" }) 
-
-map({"v","n","s"}, "<leader>sc", "<cmd>q<cr>" ,{ desc = "关闭窗口/Exit Window" })   
-
-map('v', '<C-c>', '"+y' ,{ desc = "copy" })
-map('i', '<C-c>', '<Esc>"+y' ,{ desc = "copy" })
-map('n', '<C-c>', '"+y' ,{ desc = "copy" })
-
-map('n', '<C-x>', '"+x' ,{ desc = "cut" })
-map('i', '<C-c>', '<Esc>"+x' ,{ desc = "cut" })
-map('v', '<C-x>', '"+x' ,{ desc = "cut" })
-
-map('n', '<C-z>', 'u' ,{ desc = "撤销/undo" })
-map('i', '<C-z>', '<Esc>u' ,{ desc = "撤销/undo" })
-
-map("n", "<leader>e", ":NvimTreeToggle<CR>" ,{ desc = "nvim-tree" })
-
-
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -183,18 +151,19 @@ map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
 map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 
--- windows
-map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
-map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
-map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
+-- -- windows
+-- map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
+-- map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
+-- map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
+-- map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
+-- map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
+-- map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
 
--- tabs
-map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
-map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
-map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
-map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
-map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+-- -- tabs
+-- map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
+-- map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+-- map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
+-- map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+-- map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+-- map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+

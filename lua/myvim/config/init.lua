@@ -14,6 +14,7 @@ local defaults = {
   defaults = {
     autocmds = true, -- myvim.config.autocmds
     keymaps = true, -- myvim.config.keymaps
+    mykeymaps = true, -- myvim.config.mykeymaps
     -- myvim.config.options can't be configured here since that's loaded before myvim setup
     -- if you want to disable loading options, add `package.loaded["myvim.config.options"] = true` to the top of your init.lua
   },
@@ -106,12 +107,14 @@ function M.setup(opts)
       callback = function()
         M.load("autocmds")
         M.load("keymaps")
+        M.load("mykeymaps")
       end,
     })
   else
     -- load them now so they affect the opened buffers
     M.load("autocmds")
     M.load("keymaps")
+    M.load("mykeymaps")
   end
 
   require("lazy.core.util").try(function()
