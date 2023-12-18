@@ -49,11 +49,12 @@ return {
         python = "python -u",
         sh = "bash",
         rust = "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+        csharp = "cd $dir && dotnet run",
       },
       project_path = "", -- No default path defined
       project = {},
     },
-    ft = { "lua", "python", "c", "cpp" },
+    ft = { "lua", "python", "c", "cpp", "cs" },
     -- config = {
     --   filetype = {
     --     python = "python3 -u",
