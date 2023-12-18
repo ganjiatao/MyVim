@@ -25,9 +25,6 @@ map("t", "jk", "<C-\\><C-n>:q<CR>", { desc = "退出终端/Exit Terminal" })
 map({ "i", "v" }, "<C-a>", "<esc>ggVG", { desc = "全选/Select all" })
 map("n", "<C-a>", "ggVG", { desc = "全选/Select all" })
 
--- 保存文件
-map({ "i" }, "<C-s>", "<esc>:w<cr>i", { desc = "Save file" })
-
 map({ "v", "n", "s" }, "<leader>sc", "<cmd>q<cr>", { desc = "关闭窗口/Exit Window" })
 
 map("v", "<C-c>", '"+y', { desc = "copy" })
