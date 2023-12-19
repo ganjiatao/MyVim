@@ -17,7 +17,7 @@ end
 
 -- mykeymap
 
-map("i", "jk", "<ESC>", { desc = "退出编辑/Exit Editing" })
+map("i", "jk", "<ESC>:w<CR>", { desc = "退出编辑/Exit Editing" })
 map("n", "jk", ":q<CR>", { desc = "退出/Exit" })
 map("t", "jk", "<C-\\><C-n>:q<CR>", { desc = "退出终端/Exit Terminal" })
 
