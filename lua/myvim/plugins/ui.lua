@@ -304,7 +304,6 @@ return {
         dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
         dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
         dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
-        dashboard.button("x", " " .. " Lazy Extras", ":LazyExtras<CR>"),
         dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
         dashboard.button("q", " " .. " Quit", ":qa<CR>"),
       }

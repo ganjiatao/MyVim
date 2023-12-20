@@ -2,6 +2,7 @@
 return {
   -- disable alpha
   { "goolord/alpha-nvim", enabled = false },
+  { "nvimdev/dashboard-nvim", enabled = false },
 
   -- enable mini.starter
   {
@@ -10,18 +11,12 @@ return {
     event = "VimEnter",
     opts = function()
       local logo = table.concat({
-  "      ██████╗  ██╗   ██╗ █████╗ ███╗   ██╗ ██████╗             ",
-  "      ██╔════╝ ██║   ██║██╔══██╗████╗  ██║██╔════╝             ",
-  "      ██║  ███╗██║   ██║███████║██╔██╗ ██║██║  ███╗            ",
-  "      ██║   ██║██║   ██║██╔══██║██║╚██╗██║██║   ██║            ",
-  "      ╚██████╔╝╚██████╔╝██║  ██║██║ ╚████║╚██████╔╝            ",
-  "       ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝             ",
-  "                ██╗   ██╗██╗███╗   ███╗                        ",
-  "                ██║   ██║██║████╗ ████║                        ",
-  "                ██║   ██║██║██╔████╔██║                        ",
-  "                ╚██╗ ██╔╝██║██║╚██╔╝██║                        ",
-  "                 ╚████╔╝ ██║██║ ╚═╝ ██║                        ",
-  "                  ╚═══╝  ╚═╝╚═╝     ╚═╝                        ",
+        "            ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z",
+        "            ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z    ",
+        "            ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z       ",
+        "            ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z         ",
+        "            ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║           ",
+        "            ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝           ",
       }, "\n")
       local pad = string.rep(" ", 22)
       local new_section = function(name, action, section)
@@ -34,21 +29,16 @@ return {
         evaluate_single = true,
         header = logo,
         items = {
-          new_section("Find file",    "Telescope find_files", "Telescope"),
-          new_section("Recent files", "Telescope oldfiles",   "Telescope"),
-          new_section("Grep text",    "Telescope live_grep",  "Telescope"),
-          new_section("init.lua",     "e $MYVIMRC",           "Config"),
-          new_section("Lazy",         "Lazy",                 "Config"),
-          new_section("New file",     "ene | startinsert",    "Built-in"),
-          new_section("Quit",         "qa",                   "Built-in"),
-          new_section("Session restore", [[lua require("persistence").load()]], "Session"),
+          new_section("Find file",       "Telescope find_files",                                   "Telescope"),
+          new_section("Recent files",    "Telescope oldfiles",                                     "Telescope"),
+          new_section("Grep text",       "Telescope live_grep",                                    "Telescope"),
+          new_section("Config",          "lua require('myvim.util').telescope.config_files()()", "Config"),
+          new_section("Extras",          "LazyExtras",                                             "Config"),
+          new_section("Lazy",            "Lazy",                                                   "Config"),
+          new_section("New file",        "ene | startinsert",                                      "Built-in"),
+          new_section("Quit",            "qa",                                                     "Built-in"),
+          new_section("Session restore", [[lua require("persistence").load()]],                    "Session"),
         },
-        if not require("myvim.util").has("telescope.nvim") then
-          items[1] = new_section("Find file",    "FZF", "fzf"),
-          items[3] =  new_section("Grep text",    "Rg",  "fzf.vim"),
-          table.remove(items, 2)
-        end
-
         content_hooks = {
           starter.gen_hook.adding_bullet(pad .. "░ ", false),
           starter.gen_hook.aligning("center", "center"),

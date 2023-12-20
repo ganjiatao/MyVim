@@ -3,24 +3,13 @@ return {
   {
     "gbprod/yanky.nvim",
     dependencies = { { "kkharji/sqlite.lua", enabled = not jit.os:find("Windows") } },
-    opts = function()
-      local mapping = require("yanky.telescope.mapping")
-      local mappings = mapping.get_defaults()
-      mappings.i["<c-p>"] = nil
-      return {
-        highlight = { timer = 200 },
-        ring = { storage = jit.os:find("Windows") and "shada" or "sqlite" },
-        picker = {
-          telescope = {
-            use_default_mappings = false,
-            mappings = mappings,
-          },
-        },
-      }
-    end,
+    opts = {
+      highlight = { timer = 250 },
+      ring = { storage = jit.os:find("Windows") and "shada" or "sqlite" },
+    },
     keys = {
         -- stylua: ignore
-      
+      { "<leader>p", function() require("telescope").extensions.yank_history.yank_history({ }) end, desc = "Open Yank History" },
       { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank text" },
       { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put yanked text after cursor" },
       { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
@@ -39,8 +28,5 @@ return {
       { "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put after applying a filter" },
       { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before applying a filter" },
     },
-  if require("myvim.util").has("telescope.nvim") then
-    keys[#keys +1] = { "<leader>p", function() require("telescope").extensions.yank_history.yank_history({ }) end, desc = "Open Yank History" }
-  end
   },
 }

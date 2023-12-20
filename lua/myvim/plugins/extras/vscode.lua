@@ -18,7 +18,6 @@ local enabled = {
 }
 
 local Config = require("lazy.core.config")
-local Plugin = require("lazy.core.plugin")
 Config.options.checker.enabled = false
 Config.options.change_detection.enabled = false
 Config.options.defaults.cond = function(plugin)
@@ -37,7 +36,7 @@ vim.api.nvim_create_autocmd("User", {
 
 return {
   {
-    "aslingguang/MyVim",
+    "MyVim/MyVim",
     config = function(_, opts)
       opts = opts or {}
       -- disable the colorscheme
