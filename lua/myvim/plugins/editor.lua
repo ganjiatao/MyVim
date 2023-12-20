@@ -5,6 +5,7 @@ return {
   -- search/replace in multiple files
   {
     "nvim-pack/nvim-spectre",
+    build = false,
     cmd = "Spectre",
     opts = { open_cmd = "noswapfile vnew" },
     -- stylua: ignore
@@ -13,30 +14,6 @@ return {
     },
   },
 
-
-  -- disable old installations of leap and flit. Optional so it doesn't appear under disabled plugins
-  {
-    "ggandor/leap.nvim",
-    enabled = function()
-      vim.schedule(function()
-        local Config = require("lazy.core.config")
-        if Config.spec.disabled["leap.nvim"] or Config.spec.disabled["flit.nvim"] then
-          require("lazy.core.util").warn(
-            [[`flash.nvim` is now the default **MyVim** jump plugin.
-**leap.nvim** and **flit.nvim** have been disabled.
-Please remove the plugins from your config.
-If you rather use leap/flit instead, you can add the leap extra:
-`myvim.plugins.extras.editor.leap`
-]],
-            { title = "MyVim" }
-          )
-        end
-      end)
-      return false
-    end,
-    optional = true,
-  },
-  { "ggandor/flit.nvim", enabled = false, optional = true },
 
   -- Flash enhances the built-in search functionality by showing labels
   -- at the end of each match, letting you quickly jump to a specific
@@ -66,12 +43,10 @@ If you rather use leap/flit instead, you can add the leap extra:
     event = "VeryLazy",
     opts = {
       plugins = { spelling = true },
-      
       defaults = {
-
         mode = { "n", "v" },
         ["g"] = { name = "+goto" },
-        ["gz"] = { name = "+surround" },
+        ["gs"] = { name = "+surround" },
         ["]"] = { name = "+next" },
         ["["] = { name = "+prev" },
         ["<leader><tab>"] = { name = "+tabs" },
@@ -91,7 +66,6 @@ If you rather use leap/flit instead, you can add the leap extra:
       local wk = require("which-key")
       wk.setup(opts)
       wk.register(opts.defaults)
-
     end,
   },
 
@@ -100,7 +74,7 @@ If you rather use leap/flit instead, you can add the leap extra:
   -- hunks in a commit.
   {
     "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = "LazyFile",
     opts = {
       signs = {
         add = { text = "▎" },
@@ -139,7 +113,7 @@ If you rather use leap/flit instead, you can add the leap extra:
   -- instances.
   {
     "RRethy/vim-illuminate",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "LazyFile",
     opts = {
       delay = 200,
       large_file_cutoff = 2000,
@@ -177,9 +151,27 @@ If you rather use leap/flit instead, you can add the leap extra:
   -- buffer remove
   {
     "echasnovski/mini.bufremove",
-    -- stylua: ignore
+
     keys = {
-      { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+      {
+        "<leader>bd",
+        function()
+          local bd = require("mini.bufremove").delete
+          if vim.bo.modified then
+            local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
+            if choice == 1 then -- Yes
+              vim.cmd.write()
+              bd(0)
+            elseif choice == 2 then -- No
+              bd(0, true)
+            end
+          else
+            bd(0)
+          end
+        end,
+        desc = "Delete Buffer",
+      },
+      -- stylua: ignore
       { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
     },
   },
@@ -227,28 +219,19 @@ If you rather use leap/flit instead, you can add the leap extra:
 
   -- Finds and lists all of the TODO, HACK, BUG, etc comment
   -- in your project and loads them into a browsable list.
-
   {
     "folke/todo-comments.nvim",
-    cmd = { "TodoTrouble" },
-    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TodoTrouble", "TodoTelescope" },
+    event = "LazyFile",
     config = true,
     -- stylua: ignore
     keys = {
       { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
       { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
       { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },  
+      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
     },
-    opt = function() 
-      if require("myvim.util").has("telescope.nvim") then
-        cmd[#cmd + 1] = "TodoTelescope"
-      end
-      if require("myvim.util").has("telescope.nvim") then
-        keys[#keys + 1] = { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" }
-        keys[#keys + 1] = { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" }
-
-      end
-    end
   },
 }
