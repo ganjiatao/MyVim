@@ -315,7 +315,7 @@ return {
         buttons[1] = dashboard.button("f", " " .. " Find file", "<cmd>FZF<CR>")
         buttons[3] = dashboard.button("g", " " .. " Find text", "<cmd>Rg<CR>")
         table.remove(buttons, 2)
-        table.remove(buttons, 5)
+        table.remove(buttons, 4)
       end
       
       dashboard.section.buttons.val = buttons
